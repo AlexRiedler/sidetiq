@@ -1,3 +1,5 @@
+require 'sidekiq/cli'
+
 module Sidetiq
   module Actor
     def self.included(base)

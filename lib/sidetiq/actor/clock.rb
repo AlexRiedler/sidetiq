@@ -8,7 +8,7 @@ module Sidetiq
         super
 
         if Sidekiq.server?
-          after(0) do
+          after(1) do
             debug "Sidetiq::Clock looping ..."
             loop!
           end

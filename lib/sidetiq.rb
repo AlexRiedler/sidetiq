@@ -52,15 +52,20 @@ module Sidetiq
 
   # Public: Returns the Sidetiq::Clock actor.
   def clock
-    Sidetiq::Supervisor.clock
+    supervisor[:sidetiq_clock]
   end
 
   # Public: Returns a Sidetiq::Handler worker.
   def handler
-    Sidetiq::Supervisor.handler
+    supervisor[:sidetiq_handler]
+  end
+
+  def supervisor
+    @supervisor ||= Sidetiq::Supervisor.run!
   end
 end
 
 if Sidekiq.server?
-  Sidetiq::Supervisor.run!
+  Sidetiq.supervisor
+  #Sidetiq::Supervisor.run!
 end

@@ -17,16 +17,6 @@ module Sidetiq
     class << self
       include Logging
 
-      def clock
-        run! if Celluloid::Actor[:sidetiq_clock].nil?
-        Celluloid::Actor[:sidetiq_clock]
-      end
-
-      def handler
-        run! if Celluloid::Actor[:sidetiq_handler].nil?
-        Celluloid::Actor[:sidetiq_handler]
-      end
-
       def run!
         motd
         info "Sidetiq::Supervisor start"
